@@ -1,6 +1,6 @@
-package cources.zoo;
+package zoo;
 
-import cources.zoo.animals.HasNotTicketException;
+import zoo.animals.HasNotTicketException;
 
 import java.util.Scanner;
 

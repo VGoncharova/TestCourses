@@ -1,14 +1,14 @@
-package cources.zoo;
+package zoo;
 
-import cources.zoo.animals.Africa.Monkey;
-import cources.zoo.animals.Animal;
-import cources.zoo.animals.Australia.Varan;
-import cources.zoo.animals.Europe.Eagle;
-import cources.zoo.animals.HasNotTicketException;
-import cources.zoo.cages.Cage;
-import cources.zoo.cages.Padok;
-import cources.zoo.cages.Terrarium;
-import cources.zoo.cages.Volier;
+import zoo.animals.Africa.Monkey;
+import zoo.animals.Animal;
+import zoo.animals.Australia.Varan;
+import zoo.animals.Europe.Eagle;
+import zoo.animals.HasNotTicketException;
+import zoo.cages.Cage;
+import zoo.cages.Padok;
+import zoo.cages.Terrarium;
+import zoo.cages.Volier;
 
 public class Zoo {
     public static final int ANIMAL_NOT_FOUND = -1;

@@ -1,6 +1,6 @@
-package cources.zoo.animals.Europe;
+package zoo.animals.Europe;
 
-import cources.zoo.animals.Birds;
+import zoo.animals.Birds;
 
 public class Eagle extends Birds {
     private int eyeStrenght;

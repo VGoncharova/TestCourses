@@ -1,6 +1,6 @@
-package cources.zoo.animals.Australia;
+package zoo.animals.Australia;
 
-import cources.zoo.animals.Reptiles;
+import zoo.animals.Reptiles;
 
 public class Varan extends Reptiles {
     private boolean poisonous;

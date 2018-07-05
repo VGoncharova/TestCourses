@@ -1,4 +1,4 @@
-package cources.zoo.animals;
+package zoo.animals;
 
 public abstract class Reptiles extends Animal{
     private short tailLenght;

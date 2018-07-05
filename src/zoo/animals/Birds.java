@@ -1,4 +1,4 @@
-package cources.zoo.animals;
+package zoo.animals;
 
 public abstract class Birds extends Animal {
     private short wingSize;

@@ -1,4 +1,4 @@
-package cources.zoo.cages;
+package zoo.cages;
 
 public interface ICageDescriptor {
     String getCageDescription();

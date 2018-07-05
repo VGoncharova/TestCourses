@@ -1,6 +1,6 @@
-package cources.zoo.animals.Africa;
+package zoo.animals.Africa;
 
-import cources.zoo.animals.Mleko;
+import zoo.animals.Mleko;
 
 public class Monkey extends Mleko {
     private int wordKnown;

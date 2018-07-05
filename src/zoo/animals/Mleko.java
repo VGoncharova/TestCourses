@@ -1,4 +1,4 @@
-package cources.zoo.animals;
+package zoo.animals;
 
 public abstract class Mleko extends Animal {
     private boolean isWool;

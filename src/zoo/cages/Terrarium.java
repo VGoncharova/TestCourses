@@ -1,6 +1,6 @@
-package cources.zoo.cages;
+package zoo.cages;
 
-import cources.zoo.animals.Animal;
+import zoo.animals.Animal;
 
 public class Terrarium extends Cage{
     private int volume;

@@ -1,4 +1,4 @@
-package cources.zoo.animals;
+package zoo.animals;
 
 public class HasNotTicketException extends Exception {
 
