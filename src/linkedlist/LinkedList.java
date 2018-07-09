@@ -43,10 +43,10 @@ public class LinkedList<Param> implements List<Param> {
     @Override
     public boolean contains(Object o) {
         Knot<Param> pointer = head;
-        while (pointer!=null){
-            if (pointer.value.equals(o)){
+        while (pointer != null) {
+            if (pointer.value.equals(o)) {
                 return true;
-            }else{
+            } else {
                 pointer = pointer.next;
             }
         }
@@ -70,14 +70,14 @@ public class LinkedList<Param> implements List<Param> {
 
     @Override
     public boolean add(Param param) {
-        if (head==null&&tail==null){
+        if (head == null && tail == null) {
             Knot<Param> element = new Knot<>(null, null, param);
-             head=element;
-             tail=element;
-        }else {
+            head = element;
+            tail = element;
+        } else {
             Knot<Param> element = new Knot<>(tail, null, param);
-            tail.next=element;
-            tail=element;
+            tail.next = element;
+            tail = element;
         }
         return true;
     }
@@ -114,14 +114,15 @@ public class LinkedList<Param> implements List<Param> {
 
     @Override
     public void clear() {
-
+        head = null;
+        tail = null;
     }
 
     @Override
     public Param get(int index) {
         Knot<Param> pointer = head;
-        for (int i = 0; i <index ; i++) {
-            pointer=pointer.next;
+        for (int i = 0; i < index; i++) {
+            pointer = pointer.next;
         }
         return pointer.value;
     }
