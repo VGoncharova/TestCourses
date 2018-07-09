@@ -42,6 +42,14 @@ public class LinkedList<Param> implements List<Param> {
 
     @Override
     public boolean contains(Object o) {
+        Knot<Param> pointer = head;
+        while (pointer!=null){
+            if (pointer.value.equals(o)){
+                return true;
+            }else{
+                pointer = pointer.next;
+            }
+        }
         return false;
     }
 
