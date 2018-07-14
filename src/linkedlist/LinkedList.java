@@ -60,6 +60,9 @@ public class LinkedList<Param> implements List<Param> {
 
     @Override
     public Object[] toArray() {
+//        for (int i = 0; i < ; i++) {
+//
+//        }
         return new Object[0];
     }
 
@@ -84,6 +87,17 @@ public class LinkedList<Param> implements List<Param> {
 
     @Override
     public boolean remove(Object o) {
+//        Knot<Param> element = new Knot<>();
+//        if (element.prev!=null&&element.next!=null){
+//
+//        }else if(element.prev==null){
+//            Knot<Param> elementPrev = new Knot<>(tail,null, o);
+//            elementPrev=head.next;
+//
+//        }else (element.next==null){
+//            Knot<Param> elementNext = new Knot<>(tail,null, o);
+//            elementNext=tail.prev;
+//        }
         return false;
     }
 
@@ -94,7 +108,11 @@ public class LinkedList<Param> implements List<Param> {
 
     @Override
     public boolean addAll(Collection<? extends Param> c) {
-        return false;
+
+//        for (Param param: c) {
+//            add(param);
+//        }
+        return true;
     }
 
     @Override
