@@ -5,9 +5,8 @@ import ATMadvanced.model.money.Money;
 import ATMadvanced.model.score.CreditScore;
 import ATMadvanced.model.score.CurrentScore;
 import ATMadvanced.model.score.DebetScore;
-import ATMadvanced.model.score.Score;
 
-public class ATM {
+public class ATM implements IATM {
     private CurrentScore currentScore;
     private DebetScore debetScore;
     private CreditScore creditScore;
@@ -46,7 +45,13 @@ public class ATM {
         this.debetScore = debetScore;
     }
 
+    @Override
     public CreditScore getCreditScore() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return creditScore;
     }
 

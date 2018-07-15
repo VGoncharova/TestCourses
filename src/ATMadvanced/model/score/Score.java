@@ -1,12 +1,14 @@
 package ATMadvanced.model.score;
 
-import ATMadvanced.Loggable;
-import ATMadvanced.OperationLimit;
+import ATMadvanced.annotations.Loggable;
+import ATMadvanced.annotations.MethodLimit;
+import ATMadvanced.annotations.OperationLimit;
 import ATMadvanced.model.account.Account;
 import ATMadvanced.model.money.Money;
 import ATMadvanced.model.money.MoneyInterface;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @Loggable
@@ -14,6 +16,12 @@ public abstract class Score implements MoneyInterface {
     private Money balance;
     private Account owner;
     private Integer number;
+
+    public int getExecutionCounter() {
+        return executionCounter;
+    }
+
+    private int executionCounter = 0;
 
     public Score(Money balance, Account owner, Integer number) {
         this.balance = balance;
@@ -75,8 +83,8 @@ public abstract class Score implements MoneyInterface {
     }
 
     @Override
+    @MethodLimit(execution = 3)
     public void addMoney(Money money) {
-
         double usdValueIn = money.getValue() * money.getCurrency().getUsdCource();
         double usdValueThis = this.balance.getValue() * this.balance.getCurrency().getUsdCource();
 
@@ -88,6 +96,7 @@ public abstract class Score implements MoneyInterface {
             }
             if (checkBefore()) {
                 this.balance.setValue((usdValueThis + usdValueIn) * this.balance.getCurrency().getUsdCource());
+                executionCounter++;
             } else {
                 System.out.println("No check!");
             }
@@ -98,7 +107,7 @@ public abstract class Score implements MoneyInterface {
 
     @Override
     public Money getMoney(double balanceLess) {
-        double limitToLess=30000;
+        double limitToLess = 30000;
         if (isUnderLimit(balance, balanceLess)) {
 
             if (balanceLess > limitToLess) {
@@ -108,7 +117,7 @@ public abstract class Score implements MoneyInterface {
             this.balance.setValue(this.balance.getValue() - balanceLess);
 
             return this.balance;
-        }else {
+        } else {
             System.out.println("Your sum is over limit 10000");
         }
         return null;

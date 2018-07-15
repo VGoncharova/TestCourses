@@ -1,4 +1,4 @@
-package ATMadvanced;
+package ATMadvanced.annotations;
 
 
 import java.lang.annotation.ElementType;

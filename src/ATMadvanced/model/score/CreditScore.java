@@ -1,6 +1,6 @@
 package ATMadvanced.model.score;
 
-import ATMadvanced.Loggable;
+import ATMadvanced.annotations.Loggable;
 import ATMadvanced.model.account.Account;
 import ATMadvanced.model.money.Money;
 
