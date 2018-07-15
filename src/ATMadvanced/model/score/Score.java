@@ -1,15 +1,19 @@
 package ATMadvanced.model.score;
 
 import ATMadvanced.Loggable;
+import ATMadvanced.OperationLimit;
 import ATMadvanced.model.account.Account;
 import ATMadvanced.model.money.Money;
 import ATMadvanced.model.money.MoneyInterface;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+
 @Loggable
 public abstract class Score implements MoneyInterface {
-   private Money balance;
-   private Account owner;
-   private Integer number;
+    private Money balance;
+    private Account owner;
+    private Integer number;
 
     public Score(Money balance, Account owner, Integer number) {
         this.balance = balance;
@@ -71,38 +75,63 @@ public abstract class Score implements MoneyInterface {
     }
 
     @Override
-    public void addMoney(Money money){
+    public void addMoney(Money money) {
+
         double usdValueIn = money.getValue() * money.getCurrency().getUsdCource();
         double usdValueThis = this.balance.getValue() * this.balance.getCurrency().getUsdCource();
 
-        if(usdValueThis < usdValueIn) {
-            System.out.println("You have no so much!");
-            return;
-        }
+        if (isUnderLimit(money, usdValueIn)) {
 
-        if(checkBefore()) {
-            this.balance.setValue((usdValueThis + usdValueIn) * this.balance.getCurrency().getUsdCource());
+            if (usdValueThis < usdValueIn) {
+                System.out.println("You have no so much!");
+                return;
+            }
+            if (checkBefore()) {
+                this.balance.setValue((usdValueThis + usdValueIn) * this.balance.getCurrency().getUsdCource());
+            } else {
+                System.out.println("No check!");
+            }
         } else {
-            System.out.println("No check!");
-            return;
+            System.out.println("Your sum is over limit 10000");
         }
     }
 
     @Override
-    public Money getMoney(double balanceLess){
-        if(balanceLess > 30000) {
-            throw new IllegalArgumentException("Wrong balance less!");
+    public Money getMoney(double balanceLess) {
+        double limitToLess=30000;
+        if (isUnderLimit(balance, balanceLess)) {
+
+            if (balanceLess > limitToLess) {
+                throw new IllegalArgumentException("Wrong balance less!");
+            }
+
+            this.balance.setValue(this.balance.getValue() - balanceLess);
+
+            return this.balance;
+        }else {
+            System.out.println("Your sum is over limit 10000");
         }
-
-        this.balance.setValue(this.balance.getValue() - balanceLess);
-
-        return this.balance;
+        return null;
     }
 
     @Override
-    public Money getMoneyWithoutLess(){
+    public Money getMoneyWithoutLess() {
         return this.balance;
     }
 
     abstract boolean checkBefore();
+
+    private static boolean isUnderLimit(Money money, double value) {
+        for (Annotation annotation :
+                money.getClass().getDeclaredAnnotations()) {
+            if (annotation instanceof OperationLimit) {
+                OperationLimit operationLimit = (OperationLimit) annotation;
+
+                if (operationLimit.limit() < value) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

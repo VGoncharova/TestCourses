@@ -1,7 +1,9 @@
 package ATMadvanced.model.money;
 
+import ATMadvanced.OperationLimit;
 import ATMadvanced.model.constants.CurrencyHolder;
 
+@OperationLimit(limit = 10000)
 public class Money {
     private Currency currency;
     private double value;

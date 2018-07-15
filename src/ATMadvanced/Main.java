@@ -16,6 +16,8 @@ public class Main {
 
         Money money = new Money(val, "RUR");
         atm.getCreditScore().addMoney(money);
+        atm.getCreditScore().getMoney(scanner.nextDouble());
+
         printLoggable(CreditScore.class);
         printLoggable(DebetScore.class);
         printLoggable(CurrentScore.class);
