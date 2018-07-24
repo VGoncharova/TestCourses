@@ -153,7 +153,7 @@ public abstract class Score implements MoneyInterface {
             return;
         }
 
-        if(checkBefore()) {
+        if(checkBefore(money)) {
             this.balance.setValue((usdValueThis + usdValueIn) * this.balance.getCurrency().getUsdCource());
         } else {
             System.out.println("No check!");
@@ -188,5 +188,10 @@ public abstract class Score implements MoneyInterface {
         return this.balance;
     }
 
-    abstract boolean checkBefore();
+    public boolean checkBefore(Money money){
+        if (money.getValue()<0) {
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
 }

@@ -1,7 +1,6 @@
 package atmmock.src.ru.raiffeisen.cources.atm.model.score;
 
 import atmmock.src.ru.raiffeisen.cources.atm.model.account.Account;
-import atmmock.src.ru.raiffeisen.cources.atm.model.constants.CurrencyHolder;
 import atmmock.src.ru.raiffeisen.cources.atm.model.money.Money;
 
 public class CurrentScore extends Score{
@@ -37,7 +36,7 @@ public class CurrentScore extends Score{
     }
 
     @Override
-    boolean checkBefore() {
-        return true;
+    public boolean checkBefore(Money money) {
+        return super.checkBefore(money);
     }
 }

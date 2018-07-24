@@ -25,7 +25,7 @@ public class CreditScore extends Score {
     }
 
     @Override
-    boolean checkBefore() {
-        return true;
+    public boolean checkBefore(Money money) {
+        return super.checkBefore(money);
     }
 }

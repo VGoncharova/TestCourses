@@ -13,11 +13,13 @@ public class DebetScore extends Score {
 
     @Override
     public void addMoney(Money money){
-        if(creditScore.getMoneyWithoutLess().getValue() < 20000) {
-            System.out.println("No money on Credit Score!");
-            return;
+        if (checkBefore(money)) {
+            if (creditScore.getMoneyWithoutLess().getValue() < 20000) {
+                System.out.println("No money on Credit Score!");
+                return;
+            }
+            super.addMoney(money);
         }
-        super.addMoney(money);
     }
 
     @Override
@@ -46,7 +48,7 @@ public class DebetScore extends Score {
     }
 
     @Override
-    boolean checkBefore() {
-        return true;
+    public boolean checkBefore(Money money) {
+        return super.checkBefore(money);
     }
 }

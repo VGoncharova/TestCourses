@@ -1,7 +1,9 @@
 <component name="libraryTable">
   <library name="junit-jupiter-engine-5.0.0-M1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/junit-jupiter-engine-5.0.0-M1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/junit-jupiter-api-5.2.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/junit-jupiter-engine-5.2.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/junit-vintage-engine-5.2.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
